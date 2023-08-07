@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>About</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <div class="center">
+        <h1>About</h1>
+        <form method="post" id="about_text">
+            <p>College Marketplace is a web application that aims to create a virtual 
+                marketplace for college students to buy, sell, and trade items. It addresses the 
+                challenges students face in managing expenses and finding affordable resources such 
+                as textbooks, furniture, and electronics. The goal is to provide a convenient and secure 
+                platform where students can connect and engage in transactions within their college 
+                community, fostering a sense of community, sustainability, and cost-effectiveness.</p>
+            <br>
+            <p>This web application uses the following NPM Packages:</p>
+            <ul>
+                <li>express</li>
+                <li>mongoose</li>
+                <li>express-session</li>
+                <li>bycript</li>
+            </ul>
+        </form>
+        <div class="center-button">
+            <button onclick="goBackToMain()">Close</button>
+        </div>
+    </div>
+    <script>
+        function goBackToMain() {
+            window.location.href = '/main'; // Redirect to the main page
+        }
+    </script>
+</body>
+</html>

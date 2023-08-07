@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Marketplace</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <script defer src="main.js"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div id="notification">
+        <ul class="navbar-links">
+          <li class="navbar-links"><Nav></Nav>Notification</li>
+          <li class="navbar-links"><a href="/about">About</a></li>
+          <li class="navbar-links" id="username-placeholder"></li>
+        </ul>
+        <button id="menuButton" onclick="openRightMenu()">☰</button>
+      </div>
+
+      <div id="mid">
+        <h1 class="navbar-title">Marketplace</h1>
+
+        <div class="search-bar">
+          <input type="text" placeholder="Search...">
+          <button type="submit">Search</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="product-background">
+    <div class="product-container">
+      <h2 class="product-list-title">Product List</h2>
+    </div>
+  </section>
+
+  <div class="product-list" id="product-list-container">
+    <!-- This container will be dynamically filled with products -->
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="rightMenu" style="display:none;">
+    <button onclick="closeRightMenu()" style="background: transparent; border: none; font-size: 24px;">&times;</button>
+    <a href="/Product_input">Input Product</a>
+    <div id="logout-button">
+      <a href="/logout">Logout</a>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript code to update the username-placeholder element
+    // Get the username from the query parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    
+
+    const usernamePlaceholder = document.getElementById('username-placeholder');
+
+    // Fetch the username from the server by making a request to a new endpoint
+    async function fetchUsername() {
+      try {
+        const response = await fetch('/get_username');
+        const data = await response.json();
+        const username = data.username;
+        if (username) {
+          usernamePlaceholder.textContent = username;
+        }
+      } catch (error) {
+        console.error('Error fetching username:', error);
+      }
+    }
+
+  // Call the fetchUsername function to update the username when the page loads
+  fetchUsername();
+
+    function openRightMenu() {
+      document.getElementById("rightMenu").style.display = "block";
+    }
+    
+    function closeRightMenu() {
+      document.getElementById("rightMenu").style.display = "none";
+    }
+
+    // Fetch products from the server and update the product list
+    async function fetchProducts() {
+      try {
+        // Fetch the products from the server
+        const response = await fetch('/get_products');
+        const products = await response.json();
+
+        // Get the product list container element
+        const productListContainer = document.getElementById('product-list-container');
+
+        // Clear the existing content in the container
+        productListContainer.innerHTML = '';
+
+        // Loop through each product and create a row to display it
+        products.forEach((product) => {
+          const row = document.createElement('div');
+          row.classList.add('product-row');
+
+          // Create an element to display the product name and price
+          const productText = document.createElement('h3');
+          productText.textContent = `${product.product_name} ${product.price} PHP`;
+
+          // Append the product text element to the row
+          row.appendChild(productText);
+
+          // Append the row to the product list container
+          productListContainer.appendChild(row);
+        });
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    }
+
+    // Call the fetchProducts function to display products when the page loads
+    fetchProducts();
+
+    const logoutButton = document.getElementById('logout-button');
+
+    if (logoutButton) {
+      logoutButton.addEventListener('click', () => {
+        // You can make an API request to the logout route
+        fetch('/logout', {
+          method: 'GET',
+        })
+        .then(() => {
+          // Redirect the user to the login page after successful logout
+          window.location.href = '/login';
+        })
+        .catch((error) => {
+          console.error('Error during logout:', error);
+          // Handle error if needed
+        });
+      });
+    }
+
+  </script>
+</body>
+
+</html>
+
+

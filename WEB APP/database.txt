@@ -1,0 +1,7 @@
+database user:
+username
+password
+
+database product:
+product_name
+price

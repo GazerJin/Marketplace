@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Tsukimi+Rounded:wght@700&display=swap');
+
+html, body {
+    background-color: #d8f1ff;
+    margin: 0;
+    padding: 0;
+  }
+
+/* navigation bar */
+.navbar {
+    position: sticky;
+    top: 0;
+    background: white; 
+    z-index: 999;
+    border: none;
+}
+
+.navbar-container {
+    background: linear-gradient(120deg,#2980b9, #37c4e7);
+    /* display: flex;
+    justify-content: space-between;
+    align-items: center; */
+    padding: 1rem;
+}
+
+#notification{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#mid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    flex-wrap: wrap;
+}
+
+.navbar-title {
+    font-family: 'Tsukimi Rounded', sans-serif;
+    font-size: 1.4rem;
+    padding: 1rem;
+}
+
+.navbar-links {
+    font-family: 'Cairo', sans-serif;
+    font-size: 1rem;
+    display: flex;
+    list-style-type: none;
+    margin-left: auto;
+}
+
+.navbar-links li {
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+  }
+
+.navbar-links li:hover {
+   color: rgb(68, 68, 68);
+}
+
+/* search bar */
+.search-bar {
+    /* display: flex; */
+    align-items: center;
+    flex-grow: 1;
+    margin: 0 1rem;
+    max-width: 1000px;
+}
+
+.search-bar input {
+    padding: 0.5rem;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    width: 900px;
+}
+
+.search-bar button {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: none;
+    background-color: #2980b9;
+    color: white;
+    margin-left: 0.5rem;
+}
+
+.search-bar button:hover{
+    color: darkgray;
+}
+
+/* product list */
+.product-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-row {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 5px 0;
+}
+
+.product-list-text{
+    font-family: 'Cairo', sans-serif;
+    /* font-size: 1rem; */
+    /* display: flex; */
+    list-style-type: none;
+    /* margin-left: auto; */
+}
+
+
+/* products */
+.product-background{
+    position: none;
+    top: 0;
+    background: linear-gradient(120deg,#2980b9, #37c4e7);
+    z-index: 999;
+}
+
+/* .product-container {
+    background-color: #d9d9d9;
+    border-radius: 5px;
+    padding: 1rem;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+} */
+
+.product-list-title{
+    font-family: 'Cairo', sans-serif;
+    font-weight: bold;
+    font-size: 1.75 rem;
+    text-align: center;
+    margin-top: 1rem;
+    padding: 1rem;
+}
+
+/* images */
+* {
+    box-sizing: border-box;
+  }
+  
+  .column {
+    float: left;
+    width: 20%;
+    padding: 5px;
+  }
+  
+  /* .column img {
+    width: 100%;
+    height: auto;
+    border-right: 5px ;
+    
+  }
+  
+  .column img:hover {
+    transform: scale(1.1);
+  }
+  
+  .column h3 {
+    display: none;
+  }
+  
+  .column:hover h3 {
+    display: block;
+  } */
+
+  .row::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+
+  
+  /* Style for the link */
+  #menuButton {
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    z-index: 1000;
+  }
